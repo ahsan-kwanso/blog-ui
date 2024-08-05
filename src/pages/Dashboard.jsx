@@ -7,8 +7,13 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { signout } = useContext(AuthContext); // Use the context here
   const handleSignout = () => {
-    signout();
-    navigate("/login"); // Redirect to signin page after signing out
+    try {
+      signout();
+      navigate("/login"); // Redirect to signin page after signing out
+    } catch (error) {
+      console.error("Signout failed:", error);
+      // Handle error, e.g., show a message to the user
+    }
   };
 
   return (

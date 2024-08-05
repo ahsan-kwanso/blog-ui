@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
             // Assuming '/users/me' gives current user info
             headers: { Authorization: `Bearer ${token}` },
           });
-          console.log(response.data.user);
+          //console.log(response.data.user);
           setUser(response.data.user);
         } catch (error) {
           console.error("Failed to fetch user:", error);
