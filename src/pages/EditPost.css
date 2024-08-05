@@ -1,0 +1,47 @@
+.edit-post-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.edit-post-header {
+  margin-bottom: 20px;
+}
+
+.edit-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-post-input,
+.edit-post-textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.edit-post-input {
+  height: 40px;
+}
+
+.edit-post-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.edit-post-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
