@@ -31,7 +31,7 @@ const useFetchPosts = (initialUrl) => {
   }, [url, token]); // Fetch data whenever URL or token changes
 
   const handlePageChange = (newUrl) => {
-    //console.log(newUrl);
+    console.log(newUrl);
     setUrl(newUrl); // Update URL for fetching posts
   };
 
