@@ -12,13 +12,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await signin(email, password);
-      if (result.data) {
+      const { status } = await signin(email, password);
+      if (status === 200) {
+        //console.log(status, data);
         navigate("/dashboard"); // Redirect to dashboard or another route
       } else {
         setError("An unexpected error occurred. Try Again Later");
       }
     } catch (err) {
+      //console.log(error);
       // Set error message from the thrown error
       setError(err.message);
     }

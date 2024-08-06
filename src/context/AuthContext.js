@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
         password,
       });
       localStorage.setItem("token", response.data.token);
+      //console.log(response);
       return response;
       // Optionally fetch user data after sign in
     } catch (error) {

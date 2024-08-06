@@ -9,17 +9,16 @@ const PrivateRoute = () => {
 
 export default PrivateRoute;
 
-/*
-import React, { useContext } from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+// import React, { useContext } from "react";
+// import { Navigate, Outlet } from "react-router-dom";
+// import { AuthContext } from "../context/AuthContext";
 
-const PrivateRoute = () => {
-  const { user } = useContext(AuthContext);
+// const PrivateRoute = () => {
+//   const { user } = useContext(AuthContext);
+//   console.log(user);
 
-  // If user is not authenticated, redirect to login page
-  return user ? <Outlet /> : <Navigate to="/login" />;
-};
+//   // If user is not authenticated, redirect to login page
+//   return user ? <Outlet /> : <Navigate to="/login" />;
+// };
 
-export default PrivateRoute;
-*/
+// export default PrivateRoute;

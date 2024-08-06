@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PostList from "../components/Dashboard/PostList";
 import "./DashBoard.css"; // Import your CSS file
+import { AuthContext } from "../context/AuthContext";
 
 const Dashboard = () => {
+  const { signout } = useContext(AuthContext); // Use the context here
+  const handleSignOut = () => {
+    signout();
+    navigate("/login"); // Redirect to signin page after signing out
+  };
   const navigate = useNavigate();
 
   const handleCreatePost = () => {
@@ -12,13 +18,6 @@ const Dashboard = () => {
 
   const handleListPosts = () => {
     navigate("/posts");
-  };
-
-  const handleSignOut = () => {
-    console.log("Sign out clicked");
-    // Add actual sign-out logic here
-    // e.g., clearing auth tokens, etc.
-    navigate("/login"); // Navigate to login or home page after sign out
   };
 
   return (

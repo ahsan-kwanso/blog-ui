@@ -8,12 +8,14 @@ import PrivateRoute from "./hooks/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import PostView from "./pages/PostView"; // Import PostView page
+import Intro from "./pages/Intro";
 
 const App = () => {
   return (
     <AuthProvider>
       <Router>
         <Routes>
+          <Route path="/" element={<Intro />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           {/* Add other routes here, such as Dashboard or Home */}
