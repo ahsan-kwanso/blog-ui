@@ -10,6 +10,7 @@ import EditPost from "./pages/EditPost";
 import PostView from "./pages/PostView"; // Import PostView page
 import Intro from "./pages/Intro";
 import Profile from "./pages/Profile";
+import UserPost from "./pages/UserPost";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/edit-post/:postId" element={<EditPost />} />
             <Route path="/posts/:id" element={<PostView />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/posts" element={<UserPost />} />
           </Route>
         </Routes>
       </Router>
