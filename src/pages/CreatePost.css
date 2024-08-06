@@ -33,15 +33,43 @@
 
 .create-post-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Aligns the buttons to the left and right sides */
+  margin-top: 20px; /* Adds space above the buttons */
+}
+
+.create-post-buttons .btn {
+  margin-right: 10px; /* Adds space between buttons */
 }
 
 .btn-primary {
   background-color: #007bff;
   color: #fff;
+  width: fit-content; /* Makes button width fit its content */
 }
 
 .btn-secondary {
   background-color: #6c757d;
   color: #fff;
+  width: fit-content; /* Makes button width fit its content */
+}
+
+.btn-cancel,
+.btn-back {
+  width: fit-content; /* Ensures buttons fit their content */
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.message-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message-error {
+  background-color: #f8d7da;
+  color: #721c24;
 }
