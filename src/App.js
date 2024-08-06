@@ -9,6 +9,7 @@ import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import PostView from "./pages/PostView"; // Import PostView page
 import Intro from "./pages/Intro";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/edit-post/:id" element={<EditPost />} />
             <Route path="/posts/:id" element={<PostView />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Router>

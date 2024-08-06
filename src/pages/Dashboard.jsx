@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import PostList from "../components/Dashboard/PostList";
 import "./DashBoard.css"; // Import your CSS file
 import { AuthContext } from "../context/AuthContext";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Dashboard = () => {
   const { signout } = useContext(AuthContext); // Use the context here
@@ -18,6 +20,10 @@ const Dashboard = () => {
 
   const handleListPosts = () => {
     navigate("/posts");
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
   };
 
   return (
@@ -39,6 +45,7 @@ const Dashboard = () => {
             placeholder="Search posts..."
             className="search-input"
           />
+          <FontAwesomeIcon icon={faUser} onClick={handleProfile} size="2x" />
         </div>
       </header>
       <PostList />

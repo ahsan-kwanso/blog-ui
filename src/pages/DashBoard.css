@@ -30,6 +30,7 @@
 .search-input {
   padding: 10px;
   border: 1px solid #ddd;
+  margin-right: 10px;
 }
 
 .post-list {
@@ -64,4 +65,12 @@
 
 .comments-section {
   margin-top: 15px;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 20px;
 }
