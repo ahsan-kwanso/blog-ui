@@ -65,3 +65,43 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow on hover */
   }
   
+  /* PostItem.css */
+
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.error-popup {
+  background-color: #dc3545;
+  opacity: 0;
+  animation: fadeInOut 4s forwards;
+}
+
+.success-popup {
+  background-color: #28a745;
+  opacity: 0;
+  animation: fadeInOut 4s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
