@@ -1,0 +1,14 @@
+.post-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center horizontally */
+    margin: 0 auto; /* Auto margins for horizontal centering */
+    padding: 20px; /* Optional: Add padding to the container */
+    max-width: 1200px; /* Optional: Limit the max width of the container */
+    width: 100%; /* Ensure it spans the full width of the viewport */
+  }
+  
+  .post-list > * {
+    width: 100%; /* Ensure child elements (e.g., PostItem) are full width */
+    max-width: 1000px; /* Optional: Limit the max width of child elements */
+  }

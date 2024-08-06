@@ -1,0 +1,29 @@
+.pagination-container {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 5px; /* Spacing from the posts list */
+  margin-left: 100px;
+  padding-bottom: 20px; /* Add padding to ensure spacing from the bottom of the content */
+}
+
+.pagination-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}

@@ -1,27 +1,30 @@
 import React from "react";
 import PostItem from "./PostItem";
-
-const dummyPosts = [
-  { id: 1, title: "Post Title 1", content: "Post content 1...", user: "User1" },
-  {
-    id: 2,
-    title: "Post Title 2",
-    content: "Post content 2...",
-    user: "User2",
-  },
-  { id: 3, title: "Post Title 4", content: "Post content 4...", user: "User3" },
-  { id: 4, title: "Post Title 4", content: "Post content 4...", user: "User4" },
-  { id: 5, title: "Post Title 5", content: "Post content 5...", user: "User5" },
-  // Add more dummy posts as needed
-];
+import useFetchPosts from "../../hooks/useFetchPosts";
+import Pagination from "../Layout/Pagination";
+import "./PostList.css";
 
 const PostList = () => {
+  const { data, error, loading, handlePageChange } = useFetchPosts("/posts"); // Initialize with default URL
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading posts: {error.message}</div>;
+  }
+
   return (
     <div className="post-list">
-      {dummyPosts.map((post) => (
+      {data.posts.map((post) => (
         <PostItem key={post.id} post={post} />
       ))}
-      {/* Add pagination controls here */}
+      <Pagination
+        prevPageUrl={data.prevPage}
+        nextPageUrl={data.nextPage}
+        onPageChange={handlePageChange} // Pass handlePageChange for pagination
+      />
     </div>
   );
 };
