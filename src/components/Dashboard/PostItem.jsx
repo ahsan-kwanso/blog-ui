@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../../axiosInstance"; // Import your configured axios instance
 import "./PostItem.css"; // Import the CSS file for styling
 
+const truncateContent = (content, wordLimit) => {
+  const words = content.split(" ");
+  if (words.length <= wordLimit) {
+    return content;
+  }
+  return `${words.slice(0, wordLimit).join(" ")} ...`;
+};
+
 const PostItem = ({ post }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -29,7 +37,7 @@ const PostItem = ({ post }) => {
   return (
     <div className="post-item">
       <h2>{post.title}</h2>
-      <p>{post.content}</p>
+      <p>{truncateContent(post.content, 10)}</p>
       <div className="post-actions">
         <Link to={`/posts/${post.id}`} className="btn view-btn">
           View
