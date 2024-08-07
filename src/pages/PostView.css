@@ -1,90 +1,90 @@
 /* PostView.css */
 
-.post-view-container {
-  padding: 20px;
+/* General styles for the post view */
+.post-view {
   max-width: 800px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, serif;
 }
 
-h1 {
-  color: #333; /* Darker text color for the title */
+/* Styling for the post section */
+.post {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-p {
-  color: #555; /* Medium gray text for the content */
+.post h1 {
+  text-align: center;
+  font-size: 1.8em;
+  color: #333;
+  margin-top: 0;
 }
 
-.reply-form {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #e0e0e0; /* Light gray background for the reply form */
-  border-radius: 5px;
-  border: 1px solid #ccc; /* Light border for the reply form */
+.post p {
+  font-size: 1em;
+  color: #666;
+  line-height: 1.6;
+  text-align: left;
+  margin: 0;
 }
 
-.reply-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: vertical;
-}
-
-.reply-form button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.comments-section {
+/* Styling for comments section */
+.comments {
   margin-top: 20px;
 }
 
-.comment-item {
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #e0e0e0; /* Light gray background for comments */
-  border: 1px solid #ccc; /* Light border for comments */
-  margin-bottom: 15px;
+.comments h2 {
+  font-size: 1.4em;
+  color: #333;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.comment-actions {
+.comments ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Styling for individual comments */
+.comment {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.comment ul {
+  padding-left: 20px;
+  border-left: 2px solid #ddd;
   margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
 }
 
-.comment-actions button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  font-size: 0.9em;
-}
-
-.subcomments-section {
-  margin-top: 15px;
-  padding-left: 20px; /* Indentation for subcomments */
-}
-
-.subcomment-item {
-  padding: 10px;
-  border-radius: 5px;
-  background-color: #f0f0f0; /* Even lighter gray background for subcomments */
-  border: 1px solid #ddd; /* Light border for subcomments */
+.comment li {
   margin-bottom: 10px;
 }
 
-.subcomment-actions {
-  margin-top: 10px;
-  display: flex;
-  justify-content: flex-end;
+.comment p {
+  font-size: 0.9em;
+  color: #444;
+  line-height: 1.5;
 }
 
-.subcomment-actions button {
-  margin-left: 5px;
+/* Styling for nested comments */
+.comment .comment {
   padding: 5px 10px;
-  font-size: 0.8em;
+  border: none;
+  background-color: #f4f4f4;
 }
+
+/* Font styling */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
