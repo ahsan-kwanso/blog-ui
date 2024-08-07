@@ -1,6 +1,7 @@
 .dashboard-container {
   padding: 20px;
   background-color: aliceblue;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, serif;
 }
 
 .dashboard-header {
