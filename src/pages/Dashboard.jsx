@@ -19,7 +19,7 @@ const Dashboard = () => {
   };
 
   const handleListPosts = () => {
-    navigate("/posts");
+    navigate("/dashboard/posts");
   };
 
   const handleProfile = () => {
