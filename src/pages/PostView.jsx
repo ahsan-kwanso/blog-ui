@@ -2,48 +2,58 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./PostView.css";
 import axiosInstance from "../axiosInstance";
-import { AuthContext } from "../context/AuthContext"; // Import AuthContext
+import { AuthContext } from "../context/AuthContext";
+import useError from "../hooks/useError";
 
 const PostView = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { user } = useContext(AuthContext); // Get the logged-in user
+  const [error, setError] = useError();
+  const { user } = useContext(AuthContext);
   const [showPostReplyForm, setShowPostReplyForm] = useState(false);
   const [postReplyContent, setPostReplyContent] = useState("");
   const navigate = useNavigate();
+
+  const fetchPost = async () => {
+    try {
+      const response = await axiosInstance.get(`/post/comments/${postId}`);
+      setPost(response.data[0]);
+      setLoading(false);
+    } catch (err) {
+      setError("Failed to fetch post data.");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPost();
+  }, [postId]);
 
   const handleReplyClick = () => setShowPostReplyForm(!showPostReplyForm);
 
   const handleReplySubmit = async (e) => {
     e.preventDefault();
-    // Add reply functionality here
-    console.log("Reply submitted:", postReplyContent);
-    setPostReplyContent("");
-    setShowPostReplyForm(false);
+    try {
+      await axiosInstance.post("/comments", {
+        PostId: postId,
+        title: postReplyContent.split(" ")[0], // First word of content
+        content: postReplyContent,
+        ParentId: null,
+      });
+      setPostReplyContent("");
+      setShowPostReplyForm(false);
+      fetchPost();
+    } catch (err) {
+      setError("Failed to submit reply.");
+    }
   };
+
   const handleBackToDashboard = () => {
     navigate("/dashboard");
   };
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await axiosInstance.get(`/post/comments/${postId}`);
-        setPost(response.data[0]);
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to fetch post data.");
-        setLoading(false);
-      }
-    };
-
-    fetchPost();
-  }, [postId]);
-
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
 
   return (
     <div className="post-view">
@@ -75,7 +85,13 @@ const PostView = () => {
             {post.comments.length > 0 ? (
               <ul>
                 {post.comments.map((comment) => (
-                  <CommentItem key={comment.id} comment={comment} user={user} />
+                  <CommentItem
+                    key={comment.id}
+                    comment={comment}
+                    user={user}
+                    fetchPost={fetchPost}
+                    setError={setError} // Pass setError to CommentItem
+                  />
                 ))}
               </ul>
             ) : (
@@ -84,27 +100,42 @@ const PostView = () => {
           </div>
         </div>
       )}
+      {error && <div className="popup error-popup">{error}</div>}
     </div>
   );
 };
 
-// Recursive component to handle nested comments
-const CommentItem = ({ comment, user }) => {
+const CommentItem = ({ comment, user, fetchPost, setError }) => {
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [replyContent, setReplyContent] = useState("");
 
   const handleReplyClick = () => setShowReplyForm(!showReplyForm);
-  const handleDeleteClick = () => {
-    // Add delete functionality here
-    console.log("Delete comment:", comment.id);
+
+  const handleDeleteClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axiosInstance.delete(`/comments/${comment.id}`);
+      fetchPost();
+    } catch (err) {
+      setError("Failed to delete comment.");
+    }
   };
 
   const handleReplySubmit = async (e) => {
     e.preventDefault();
-    // Add reply functionality here
-    console.log("Reply submitted:", replyContent);
-    setReplyContent("");
-    setShowReplyForm(false);
+    try {
+      await axiosInstance.post("/comments", {
+        PostId: comment.PostId,
+        title: replyContent.split(" ")[0], // First word of content
+        content: replyContent,
+        ParentId: comment.id,
+      });
+      setReplyContent("");
+      setShowReplyForm(false);
+      fetchPost();
+    } catch (err) {
+      setError("Failed to submit reply.");
+    }
   };
 
   return (
@@ -132,7 +163,13 @@ const CommentItem = ({ comment, user }) => {
       <ul>
         {comment.subComments.length > 0 &&
           comment.subComments.map((subComment) => (
-            <CommentItem key={subComment.id} comment={subComment} user={user} />
+            <CommentItem
+              key={subComment.id}
+              comment={subComment}
+              user={user}
+              fetchPost={fetchPost}
+              setError={setError} // Pass setError to nested CommentItem
+            />
           ))}
       </ul>
     </li>

@@ -10,6 +10,7 @@ const UserPostList = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  //console.log(user);
   const [pageUrl, setPageUrl] = useState(location.pathname + location.search);
   const { data, error, loading, handlePageChange } = useFetchPosts("/posts"); // Initialize with default URL
 
