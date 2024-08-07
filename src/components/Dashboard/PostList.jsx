@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PostItem from "./PostItem";
 import useFetchPosts from "../../hooks/useFetchPosts";
-import Pagination from "../Layout/Pagination";
-import { useNavigate, useLocation } from "react-router-dom";
 import "./PostList.css";
 
 const PostList = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [pageUrl, setPageUrl] = useState(location.pathname + location.search);
-  const { data, error, loading, handlePageChange } = useFetchPosts("/posts"); // Initialize with default URL
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    // Ensure the URL is updated whenever `location` changes
-    setPageUrl(location.pathname + location.search);
-  }, [location]);
+  // Fetch posts based on current page
+  const { data, error, loading } = useFetchPosts(
+    `/posts?page=${currentPage}&limit=6`
+  );
+
+  const handleNextPage = () => {
+    if (data.nextPage) {
+      // Extract the next page from the URL
+      const nextPageNumber = new URL(data.nextPage).searchParams.get("page");
+      setCurrentPage(parseInt(nextPageNumber, 10));
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -29,11 +38,15 @@ const PostList = () => {
       {data.posts.map((post) => (
         <PostItem key={post.id} post={post} />
       ))}
-      <Pagination
-        prevPageUrl={null}
-        nextPageUrl={data.nextPage}
-        onPageChange={handlePageChange} // Pass handlePageChange for pagination
-      />
+
+      <div className="pagination-controls">
+        <button onClick={handlePrevPage} disabled={currentPage <= 1}>
+          Prev
+        </button>
+        <button onClick={handleNextPage} disabled={!data.nextPage}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };

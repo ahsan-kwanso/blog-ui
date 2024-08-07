@@ -12,3 +12,17 @@
     width: 100%; /* Ensure child elements (e.g., PostItem) are full width */
     max-width: 1000px; /* Optional: Limit the max width of child elements */
   }
+
+  /* PostList.css */
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+}
+
+.pagination-controls button {
+  margin: 0 10px;
+  padding: 10px;
+  font-size: 16px;
+}
