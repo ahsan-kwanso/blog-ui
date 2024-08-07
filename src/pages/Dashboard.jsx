@@ -45,7 +45,12 @@ const Dashboard = () => {
             placeholder="Search posts..."
             className="search-input"
           />
-          <FontAwesomeIcon icon={faUser} onClick={handleProfile} size="2x" />
+          <FontAwesomeIcon
+            icon={faUser}
+            onClick={handleProfile}
+            size="2x"
+            className="btn"
+          />
         </div>
       </header>
       <PostList />
