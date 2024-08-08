@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosInstance from "../../axiosInstance"; // Import your configured axios instance
 import "./PostItem.css"; // Import the CSS file for styling
+import useError from "../../hooks/useError";
 
 const truncateContent = (content, wordLimit) => {
   const words = content.split(" ");
@@ -12,7 +13,7 @@ const truncateContent = (content, wordLimit) => {
 };
 
 const PostItem = ({ post }) => {
-  const [error, setError] = useState("");
+  const [error, setError] = useError();
   const [success, setSuccess] = useState("");
 
   const handleDelete = async () => {
