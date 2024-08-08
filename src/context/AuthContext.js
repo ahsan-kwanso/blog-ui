@@ -6,23 +6,24 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        try {
-          const response = await axiosInstance.get("/users/me", {
-            // Assuming '/users/me' gives current user info
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          console.log(response.data.user);
-          setUser(response.data.user);
-        } catch (error) {
-          console.error("Failed to fetch user:", error);
-          // Handle token expiration or invalid token
-        }
+  const fetchUser = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const response = await axiosInstance.get("/users/me", {
+          // Assuming '/users/me' gives current user info
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log(response.data.user);
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+        // Handle token expiration or invalid token
       }
-    };
+    }
+  };
+
+  useEffect(() => {
     fetchUser();
   }, []);
 
@@ -52,6 +53,7 @@ const AuthProvider = ({ children }) => {
       });
       localStorage.setItem("token", response.data.token);
       //console.log(response);
+      await fetchUser();
       return response;
       // Optionally fetch user data after sign in
     } catch (error) {
