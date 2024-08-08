@@ -38,7 +38,7 @@ const PostItem = ({ post }) => {
   return (
     <div className="post-item">
       <h2>{post.title}</h2>
-      <p>{truncateContent(post.content, 10)}</p>
+      <p>{truncateContent(post.content, 6)}</p>
       <div className="post-actions">
         <Link to={`/posts/${post.id}`} className="btn view-btn">
           View
