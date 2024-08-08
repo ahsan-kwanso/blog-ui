@@ -3,7 +3,11 @@ import PostItem from "./PostItem";
 import useFetchPosts from "../../hooks/useFetchPosts";
 import "./PostList.css"; // Reuse the existing CSS
 import { AuthContext } from "../../context/AuthContext";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 const UserPostList = () => {
   const { user } = useContext(AuthContext); // Get user from context
   console.log(user);
@@ -45,10 +49,10 @@ const UserPostList = () => {
 
       <div className="pagination-controls">
         <button onClick={handlePrevPage} disabled={currentPage <= 1}>
-          Prev
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button onClick={handleNextPage} disabled={!data.nextPage}>
-          Next
+          <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
     </div>

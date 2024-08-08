@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import PostItem from "./PostItem";
 import useFetchPosts from "../../hooks/useFetchPosts";
 import "./PostList.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const PostList = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,10 +48,10 @@ const PostList = () => {
 
       <div className="pagination-controls">
         <button onClick={handlePrevPage} disabled={currentPage <= 1}>
-          Prev
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button onClick={handleNextPage} disabled={!data.nextPage}>
-          Next
+          <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
     </div>
