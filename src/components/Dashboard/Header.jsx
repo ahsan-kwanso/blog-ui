@@ -10,6 +10,7 @@ const DashboardHeader = ({
   onListPosts,
   onSignOut,
   onProfile,
+  listPostsLabel = "My Posts", // Default label for the button
 }) => {
   return (
     <header className="dashboard-header">
@@ -19,7 +20,7 @@ const DashboardHeader = ({
           Create +
         </button>
         <button className="btn" onClick={onListPosts}>
-          My Posts
+          {listPostsLabel}
         </button>
         <button className="btn" onClick={onSignOut}>
           Sign Out
