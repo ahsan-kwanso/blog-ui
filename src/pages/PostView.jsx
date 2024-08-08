@@ -4,6 +4,10 @@ import "./PostView.css";
 import axiosInstance from "../axiosInstance";
 import { AuthContext } from "../context/AuthContext";
 import useError from "../hooks/useError";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faReply } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import { faBackward } from "@fortawesome/free-solid-svg-icons";
 
 const PostView = () => {
   const { postId } = useParams();
@@ -62,12 +66,12 @@ const PostView = () => {
           <div className="posthead">
             <h1>{post.title}</h1>
             <button className="back-btn" onClick={handleBackToDashboard}>
-              Back
+              <FontAwesomeIcon icon={faBackward} />
             </button>
           </div>
           <p>{post.content}</p>
           <button className="reply-btn" onClick={handleReplyClick}>
-            Reply
+            <FontAwesomeIcon icon={faReply} />
           </button>
           {showPostReplyForm && (
             <form onSubmit={handleReplySubmit} className="reply-form">
@@ -143,11 +147,11 @@ const CommentItem = ({ comment, user, fetchPost, setError }) => {
       <p>{comment.content}</p>
       {user && comment.UserId === user.id && (
         <button className="delete-btn" onClick={handleDeleteClick}>
-          Delete
+          <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       )}
       <button className="reply-btn" onClick={handleReplyClick}>
-        Reply
+        <FontAwesomeIcon icon={faReply} />
       </button>
       {showReplyForm && (
         <form onSubmit={handleReplySubmit} className="reply-form">
