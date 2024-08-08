@@ -1,22 +1,23 @@
   .post-item {
-    padding: 150px;
+    padding: 80px;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9; /* Optional: Add background color */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
+    margin: 0px;
   }
 
   .post-item h2 {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 700;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'sans-serif';
     margin-top: 0;
   }
   
   .post-item p {
-    margin: 10px 0;
+    font-size: 14px;
+    margin: 8px 0;
   }
   
   .post-actions {
