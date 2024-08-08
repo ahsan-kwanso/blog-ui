@@ -1,20 +1,13 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import axiosInstance from "../../axiosInstance"; // Import your configured axios instance
 import "./PostItem.css"; // Import the CSS file for styling
 import useError from "../../hooks/useError";
 import PostActions from "../Post/PostActions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
-import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { AuthContext } from "../../context/AuthContext";
 import { truncateContent } from "../../utils/truncateContent";
 
 const PostItem = ({ post }) => {
   const [error, setError] = useError();
   const [success, setSuccess] = useState("");
-  const { user } = useContext(AuthContext);
 
   const handleDelete = async () => {
     try {
