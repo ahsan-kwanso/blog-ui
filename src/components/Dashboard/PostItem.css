@@ -1,12 +1,13 @@
-.post-item {
-    padding: 15px;
+  .post-item {
+    padding: 150px;
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9; /* Optional: Add background color */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
   }
+
   .post-item h2 {
     font-size: 20px;
     font-weight: 700;
