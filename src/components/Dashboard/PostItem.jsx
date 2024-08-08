@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../../axiosInstance"; // Import your configured axios instance
 import "./PostItem.css"; // Import the CSS file for styling
 import useError from "../../hooks/useError";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 const truncateContent = (content, wordLimit) => {
   const words = content.split(" ");
@@ -41,13 +45,13 @@ const PostItem = ({ post }) => {
       <p>{truncateContent(post.content, 6)}</p>
       <div className="post-actions">
         <Link to={`/posts/${post.id}`} className="btn view-btn">
-          View
+          <FontAwesomeIcon icon={faNewspaper} className="edit-icon" />
         </Link>
         <Link to={`/edit-post/${post.id}`} className="btn edit-btn">
-          Edit
+          <FontAwesomeIcon icon={faPenToSquare} className="edit-icon" />
         </Link>
         <button className="btn delete-btn" onClick={handleDelete}>
-          Delete
+          <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       </div>
       {error && <div className="popup error-popup">{error}</div>}
