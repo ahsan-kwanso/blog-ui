@@ -5,8 +5,7 @@ import PostList from "../components/Dashboard/PostList";
 import SearchPostList from "../components/Dashboard/SearchPostList";
 import "./DashBoard.css"; // Import your CSS file
 import { AuthContext } from "../context/AuthContext";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Header from "../components/Dashboard/Header";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
@@ -36,33 +35,14 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
-        <h1>Blog Application</h1>
-        <div className="dashboard-actions">
-          <button className="btn" onClick={handleCreatePost}>
-            Create +
-          </button>
-          <button className="btn" onClick={handleListPosts}>
-            My Posts
-          </button>
-          <button className="btn" onClick={handleSignOut}>
-            Sign Out
-          </button>
-          <input
-            type="text"
-            placeholder="Search posts..."
-            className="search-input"
-            value={searchQuery}
-            onChange={handleSearchChange} // Update search query on input change
-          />
-          <FontAwesomeIcon
-            icon={faUser}
-            onClick={handleProfile}
-            size="2x"
-            className="btn"
-          />
-        </div>
-      </header>
+      <Header
+        searchQuery={searchQuery}
+        onSearchChange={handleSearchChange}
+        onCreatePost={handleCreatePost}
+        onListPosts={handleListPosts}
+        onSignOut={handleSignOut}
+        onProfile={handleProfile}
+      />
       {searchQuery ? (
         <SearchPostList searchQuery={searchQuery} /> // Render SearchPostList when there's a search query
       ) : (
