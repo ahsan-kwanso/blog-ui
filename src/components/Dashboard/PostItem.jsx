@@ -3,19 +3,13 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../../axiosInstance"; // Import your configured axios instance
 import "./PostItem.css"; // Import the CSS file for styling
 import useError from "../../hooks/useError";
+import PostActions from "../Post/PostActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { faNewspaper } from "@fortawesome/free-regular-svg-icons";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { AuthContext } from "../../context/AuthContext";
-
-const truncateContent = (content, wordLimit) => {
-  const words = content.split(" ");
-  if (words.length <= wordLimit) {
-    return content;
-  }
-  return `${words.slice(0, wordLimit).join(" ")} ...`;
-};
+import { truncateContent } from "../../utils/truncateContent";
 
 const PostItem = ({ post }) => {
   const [error, setError] = useError();
@@ -45,23 +39,7 @@ const PostItem = ({ post }) => {
     <div className="post-item">
       <h2>{truncateContent(post.title, 5)}</h2>
       <p>{truncateContent(post.content, 24)}</p>
-      {post.UserId === user.id ? (
-        <div className="post-actions">
-          <Link to={`/posts/${post.id}`} className="btn view-btn">
-            <FontAwesomeIcon icon={faNewspaper} className="edit-icon" />
-          </Link>
-          <Link to={`/edit-post/${post.id}`} className="btn edit-btn">
-            <FontAwesomeIcon icon={faPenToSquare} className="edit-icon" />
-          </Link>
-          <button className="btn delete-btn" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faTrashAlt} />
-          </button>
-        </div>
-      ) : (
-        <Link to={`/posts/${post.id}`} className="btn view-btn">
-          <FontAwesomeIcon icon={faNewspaper} className="edit-icon" />
-        </Link>
-      )}
+      <PostActions post={post} onDelete={handleDelete} />
       {error && <div className="popup error-popup">{error}</div>}
       {success && <div className="popup success-popup">{success}</div>}
     </div>
