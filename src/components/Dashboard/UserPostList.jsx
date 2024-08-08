@@ -36,10 +36,12 @@ const UserPostList = () => {
   }
 
   return (
-    <div className="post-list">
-      {data.posts.map((post) => (
-        <PostItem key={post.id} post={post} />
-      ))}
+    <div className="post-list-container">
+      <div className="post-list">
+        {data.posts.map((post) => (
+          <PostItem key={post.id} post={post} />
+        ))}
+      </div>
 
       <div className="pagination-controls">
         <button onClick={handlePrevPage} disabled={currentPage <= 1}>
