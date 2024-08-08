@@ -4,7 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
-import PrivateRoute from "./hooks/PrivateRoute";
+import PrivateRoute from "./hoc/PrivateRoute";
 import CreatePost from "./pages/CreatePost";
 import EditPost from "./pages/EditPost";
 import PostView from "./pages/PostView"; // Import PostView page
