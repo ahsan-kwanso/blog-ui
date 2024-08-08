@@ -1,17 +1,23 @@
+/* createPost.css */
+
 .create-post-container {
   padding: 20px;
-  max-width: 800px;
   margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, serif;
 }
 
 .create-post-header {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .create-post-form {
   display: flex;
   flex-direction: column;
+  width: 500px;
   gap: 15px;
 }
 
@@ -34,43 +40,49 @@
 
 .create-post-buttons {
   display: flex;
-  justify-content: space-between; /* Aligns the buttons to the left and right sides */
-  margin-top: 20px; /* Adds space above the buttons */
-}
-
-.create-post-buttons .btn {
-  margin-right: 10px; /* Adds space between buttons */
+  justify-content: space-between;
 }
 
 .btn-primary {
   background-color: #007bff;
   color: #fff;
-  width: fit-content; /* Makes button width fit its content */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
 }
 
 .btn-secondary {
   background-color: #6c757d;
   color: #fff;
-  width: fit-content; /* Makes button width fit its content */
-}
-
-.btn-cancel,
-.btn-back {
-  width: fit-content; /* Ensures buttons fit their content */
-}
-
-.message {
-  padding: 10px;
+  border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  margin-top: 15px;
+  cursor: pointer;
 }
 
-.message-success {
-  background-color: #d4edda;
-  color: #155724;
+.btn-secondary:hover {
+  background-color: #5a6268;
 }
 
-.message-error {
+.error-message {
+  padding: 10px;
+  border: 1px solid #f5c6cb;
   background-color: #f8d7da;
   color: #721c24;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.success-message {
+  padding: 10px;
+  border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
