@@ -6,8 +6,8 @@ import "./CreatePost.css";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // 'success' or 'error'
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,11 +21,9 @@ const CreatePost = () => {
 
       setTitle("");
       setContent("");
-      setMessage("Post created successfully!");
-      setMessageType("success");
+      setSuccess("Post created successfully!");
     } catch (error) {
-      setMessage("Failed to create post. Please try again.");
-      setMessageType("error");
+      setError("Failed to create post. Please try again.");
     }
   };
 
@@ -35,6 +33,8 @@ const CreatePost = () => {
         <h1>Create New Post</h1>
       </header>
       <form className="create-post-form" onSubmit={handleSubmit}>
+        {error && <div className="error-message">{error}</div>}
+        {success && <div className="success-message">{success}</div>}
         <input
           type="text"
           placeholder="Post Title"
@@ -48,15 +48,6 @@ const CreatePost = () => {
           onChange={(e) => setContent(e.target.value)}
           className="create-post-textarea"
         />
-        {message && (
-          <div
-            className={`message ${
-              messageType === "success" ? "message-success" : "message-error"
-            }`}
-          >
-            {message}
-          </div>
-        )}
         <div className="create-post-buttons">
           <button type="submit" className="btn btn-primary">
             Save Post
