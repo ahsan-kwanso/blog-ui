@@ -22,6 +22,10 @@ body {
   align-items: center;
 }
 
+h1{
+  font-size:x-large;
+}
+
 /* Dashboard Actions */
 .dashboard-actions {
   display: flex;
